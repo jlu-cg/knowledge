@@ -28,7 +28,7 @@ public abstract class BaseService<T> {
     }
 
     private Pageable toPageRequest(GardenPage page) {
-        Pageable pageable = PageRequest.of(page.getStart() / page.getPageSize() + 1, page.getPageSize());
+        Pageable pageable = PageRequest.of(page.getStart() / page.getPageSize(), page.getPageSize());
         return pageable;
     }
 

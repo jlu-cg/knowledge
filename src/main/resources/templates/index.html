@@ -11,14 +11,16 @@
 <script>
 function searchKnowledge() {
     var searchText = $('#searchText').val();
-alert(searchText);
+    $.post('/search', {'searchText':searchText}, function(data){
+        console.log(data);
+    });
 }
 </script>
 </head>
 <body>
 <div>
 <form class="uk-search uk-search-default">
-    <a class="uk-search-icon-flip uk-icon uk-search-icon" href="void(0);" onclick="searchKnowledge();" uk-search-icon></a>
+    <a class="uk-search-icon-flip uk-icon uk-search-icon" href="javascript:void(0);" onclick="searchKnowledge();" uk-search-icon></a>
     <input id="searchText" class="uk-search-input" type="search" placeholder=""/>
 </form>
 </div>
