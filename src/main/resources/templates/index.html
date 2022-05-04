@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/uikit.min.css" />
+    <script src="js/uikit.min.js"></script>
+    <script src="js/uikit-icons.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+<script>
+function searchKnowledge() {
+    var searchText = $('#searchText').val();
+alert(searchText);
+}
+</script>
+</head>
+<body>
+<div>
+<form class="uk-search uk-search-default">
+    <a class="uk-search-icon-flip uk-icon uk-search-icon" href="void(0);" onclick="searchKnowledge();" uk-search-icon></a>
+    <input id="searchText" class="uk-search-input" type="search" placeholder=""/>
+</form>
+</div>
+<div id="detail">
+</div>
+</body>
+</html>
