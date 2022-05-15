@@ -1,9 +1,6 @@
 package com.gardener.bean;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * 知识标签
@@ -12,6 +9,7 @@ import javax.persistence.Table;
 @Table(name="Label")
 public class Label {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 

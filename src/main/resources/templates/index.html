@@ -4,36 +4,36 @@
     <meta charset="UTF-8">
     <title>欢迎页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/uikit.min.css" />
-    <script src="js/uikit.min.js"></script>
-    <script src="js/uikit-icons.min.js"></script>
-    <script src="js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/uikit.min.css" />
+    <script src="/js/uikit.min.js"></script>
+    <script src="/js/uikit-icons.min.js"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
 <script>
 function searchKnowledge() {
     var searchText = $('#searchText').val();
-    $.post('/search', {'searchText':searchText}, function(data){
-        var innerHtml = '<table class="uk-table"><caption></caption><thead><tr><th>标题</th><th>内容</th></tr></thead>'
+    $.post('/search/search', {'searchText':searchText}, function(data){
+        var innerHtml = '<table class="uk-table"><caption></caption><thead><tr><th>标题</th><th>内容</th><th>操作</th></tr></thead>'
                 + '<tfoot><tr><td></td><td></td></tr></tfoot><tbody>';
         for(var i = 0, len = data.data.pageData.length; i < len; i++) {
             innerHtml += '<tr><td>' + data.data.pageData[i].title + '</td><td>' + data.data.pageData[i].content
-                + '</td><td><a class="uk-button uk-button-default" href="/knowledge/view?id='
-                + data.data.pageData[i].id + '"></a><a class="uk-button uk-button-default" href="/knowledge/edit?id='
-                + data.data.pageData[i].id + '"></a></td></tr>';
+                + '</td><td><a class="uk-button uk-button-primary" href="/knowledge/view?id='
+                + data.data.pageData[i].id + '">查看</a><a class="uk-button uk-button-secondary" href="/knowledge/edit?id='
+                + data.data.pageData[i].id + '">编辑</a></td></tr>';
         }
         innerHtml += '</tbody></table>';
-        $('#detail').innerHTML = innerHtml;
+        $('#detail').html(innerHtml);
     });
 }
 </script>
 </head>
 <body>
-<div>
+<div class="uk-width-5-6 uk-align-center">
 <form class="uk-search uk-search-default">
-    <a class="uk-search-icon-flip uk-icon uk-search-icon" href="javascript:void(0);" onclick="searchKnowledge();" uk-search-icon></a>
-    <input id="searchText" class="uk-search-input" type="search" placeholder=""/>
+    <a class="uk-search-icon-flip uk-icon uk-search-icon" href="javascript:void(0);" onclick="searchKnowledge();" onkeydown="return false;" uk-search-icon></a>
+    <input id="searchText" class="uk-search-input" type="search" placeholder="请输入查找的信息..."/>
 </form>
-</div>
-<div id="detail">
+    <div id="detail">
+    </div>
 </div>
 </body>
 </html>

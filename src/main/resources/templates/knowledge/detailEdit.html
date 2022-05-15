@@ -1,33 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>欢迎页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/uikit.min.css" />
-    <script src="js/uikit.min.js"></script>
-    <script src="js/uikit-icons.min.js"></script>
-    <script src="js/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/uikit.min.css" />
+    <script src="/js/uikit.min.js"></script>
+    <script src="/js/uikit-icons.min.js"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script>
+        function save() {
+            $('#knowledge').submit();
+        }
+    </script>
 </head>
 <body>
-<div id="detail">
-    <form class="uk-form-horizontal uk-margin-large" action="/knowledge/save" method="post">
-    <div>
-        <input type="hidden" name="id"/>
-    </div>
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-text">标题</label>
-        <div class="uk-form-controls">
-            <input class="uk-input" id="form-horizontal-text" type="text" name="title">
+<div class="uk-width-3-4 uk-align-center">
+    <form id="knowledge" class="uk-form-horizontal uk-margin-large" action="/knowledge/save" method="post">
+        <div>
+            <input type="hidden" name="id" th:value="${detail.id}"/>
         </div>
-    </div>
-    <div class="uk-margin">
-        <label class="uk-form-label" for="form-horizontal-text">内容</label>
-        <div class="uk-form-controls">
-            <textarea class="uk-textarea" rows="5" placeholder="" name="content"></textarea>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text">标题</label>
+            <div class="uk-form-controls">
+                <input class="uk-input" id="form-horizontal-text" type="text" name="title" th:value="${detail.title}">
+            </div>
         </div>
-    </div>
+        <div class="uk-margin">
+            <label class="uk-form-label" for="content">内容</label>
+            <div class="uk-form-controls">
+                <textarea class="uk-textarea" rows="5" placeholder="" name="content" id="content" th:text="${detail.content}"></textarea>
+            </div>
+        </div>
     </form>
+    <div class="uk-align-center">
+        <button class="uk-button uk-button-default">取消</button>
+        <button class="uk-button uk-button-primary" onclick="save()">保存</button>
+    </div>
 </div>
 </body>
 </html>
