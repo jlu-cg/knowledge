@@ -1,6 +1,6 @@
 package com.gardener.dto.search;
 
-public class KnowledgeDto {
+public class SearchKnowledgeDto {
     private String searchText;
 
     public String getSearchText() {

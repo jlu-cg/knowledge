@@ -12,7 +12,16 @@
 function searchKnowledge() {
     var searchText = $('#searchText').val();
     $.post('/search', {'searchText':searchText}, function(data){
-        console.log(data);
+        var innerHtml = '<table class="uk-table"><caption></caption><thead><tr><th>标题</th><th>内容</th></tr></thead>'
+                + '<tfoot><tr><td></td><td></td></tr></tfoot><tbody>';
+        for(var i = 0, len = data.data.pageData.length; i < len; i++) {
+            innerHtml += '<tr><td>' + data.data.pageData[i].title + '</td><td>' + data.data.pageData[i].content
+                + '</td><td><a class="uk-button uk-button-default" href="/knowledge/view?id='
+                + data.data.pageData[i].id + '"></a><a class="uk-button uk-button-default" href="/knowledge/edit?id='
+                + data.data.pageData[i].id + '"></a></td></tr>';
+        }
+        innerHtml += '</tbody></table>';
+        $('#detail').innerHTML = innerHtml;
     });
 }
 </script>
